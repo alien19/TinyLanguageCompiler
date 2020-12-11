@@ -8,7 +8,7 @@ x	ID
 then	THEN
 fact	ID
 :=	ASSIGN
-1	NUM
+1.5e3	NUM
 ;	SEMICOLON
 repeat	REPEAT
 fact	ID
@@ -20,6 +20,7 @@ x	ID
 x	ID
 :=	ASSIGN
 x	ID
+-	MINUS
 1	NUM
 until	UNTIL
 x	ID

@@ -65,7 +65,7 @@ MAP_PREDEFINED_TO_ENUM = {
 
 MAP_FLEXIBLE_TO_ENUM = {
   # '(-)?[0-9]+(.[0-9]+)?(e(+|-)?[0-9]+)?': TokenType.NUM,
-  '(-)?[0-9]+(.[0-9]+)?': TokenType.NUM,
+  '(-)?[0-9]+(.[0-9]+)?(e(\+|-)?[0-9]+)?': TokenType.NUM,
   '[_a-zA-Z]([_a-zA-Z0-9])*': TokenType.ID
 }
 
