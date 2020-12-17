@@ -1,37 +1,11 @@
 from enum import Enum, auto
 import re
+from common import TokenType
 
-class TokenType(Enum):
-  IF = auto()
-  THEN = auto()
-  ELSE = auto()
-  WRITE = auto()
-  READ = auto()
-  UNTIL = auto()
-  # BEGIN = auto()
-  END = auto()
-  # MAIN = auto()
-  # STRING = auto()
-  # REAL = auto()
-  # INT = auto()
-  # RETURN = auto()
-  REPEAT = auto()
+# TODO
+class Scanner:
+  pass
 
-  SEMICOLON = auto()
-  OPEN_PARAN = auto()
-  CLOSE_PARAN = auto()
-  LESS_THAN = auto()
-  # COMMA = auto()
-  PLUS = auto()
-  MINUS = auto()
-  MULT = auto()
-  DIVIDE = auto()
-  ASSIGN = auto()
-  EQUAL = auto()
-  # NOT_EQUAL = auto()
-
-  NUM = auto()
-  ID = auto()
 
 MAP_PREDEFINED_TO_ENUM = {
   'if': TokenType.IF,
@@ -39,15 +13,9 @@ MAP_PREDEFINED_TO_ENUM = {
   'else': TokenType.ELSE,
   'write': TokenType.WRITE,
   'read': TokenType.READ,
-  # 'begin': TokenType.BEGIN,
   'end': TokenType.END,
   'repeat': TokenType.REPEAT,
   'until': TokenType.UNTIL,
-  # 'main': TokenType.MAIN,
-  # 'string': TokenType.STRING,
-  # 'real': TokenType.REAL,
-  # 'int': TokenType.INT,
-  # 'return': TokenType.RETURN,
   ';': TokenType.SEMICOLON,
   '(': TokenType.OPEN_PARAN,
   ')': TokenType.CLOSE_PARAN,
@@ -59,20 +27,21 @@ MAP_PREDEFINED_TO_ENUM = {
   '/': TokenType.DIVIDE,
   ':=': TokenType.ASSIGN,
   '=': TokenType.EQUAL,
-  # '==': TokenType.EQUAL,
-  # '!=': TokenType.NOT_EQUAL,
 }
 
 MAP_FLEXIBLE_TO_ENUM = {
-  # '(-)?[0-9]+(.[0-9]+)?(e(+|-)?[0-9]+)?': TokenType.NUM,
   '(-)?[0-9]+(.[0-9]+)?(e(\+|-)?[0-9]+)?': TokenType.NUM,
   '[_a-zA-Z]([_a-zA-Z0-9])*': TokenType.ID
 }
 
-FILE_PATH = "example1.tiny"
+print("The input file should exist in the same directory as the executable file.")
+inputFileName = input("Enter the input file name:")
+OUTPUT_FILE_NAME = "result.txt"
+
+# FILE_PATH = "example1.tiny"
 OPERATORS = ["*", "+", "-", "/", ":=", "(", ")", ",", ";"]
 
-f = open(FILE_PATH, "r")
+f = open(inputFileName, "r")
 content = "".join(f.readlines())
 content = re.sub('\{(.|\n)*?\}', '', content)
 lines = content.split("\n")
@@ -88,7 +57,6 @@ for line in lines:
 
 while '' in strings:
   strings.remove('')
-print(strings)
 
 stringsAndTokens = []
 
@@ -112,10 +80,8 @@ for stringAndToken in stringsAndTokens:
   result += ("{}\t{}\n".format(stringAndToken[0], stringAndToken[1].name))
 
 result = result[:-1]
-f = open("result.txt", "w")
+f = open(OUTPUT_FILE_NAME, "w")
 f.write(result)
 f.close()
-
-print(result)
 
 

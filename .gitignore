@@ -1,0 +1,7 @@
+dist
+build
+result.txt
+*.txt
+*.spec
+*.tiny
+__pycache__

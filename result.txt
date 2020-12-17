@@ -8,7 +8,7 @@ x	ID
 then	THEN
 fact	ID
 :=	ASSIGN
-1.5e3	NUM
+1	NUM
 ;	SEMICOLON
 repeat	REPEAT
 fact	ID
