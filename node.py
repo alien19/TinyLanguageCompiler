@@ -1,3 +1,5 @@
+from common import TokenType, StructType
+
 # TODO
 class Node:
     def __init__(self, text:str, value: str, structVal: StructType, tokenType: TokenType):

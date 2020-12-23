@@ -1,5 +1,4 @@
 from enum import Enum, auto
-from node import Node
 
 class TokenType(Enum):
   IF = auto()
@@ -30,38 +29,3 @@ class TokenType(Enum):
 class StructType(Enum):
   EXPRESSION = auto()
   STATEMENT = auto()
-
-# TODO
-class ParseTreeIterator:
-  def __init__(self):
-    pass
-
-  def get_text(self) -> str:
-    pass
-
-  def get_value(self) -> str:
-    pass
-
-  def get_token_type(self) -> TokenType:
-    pass
-
-  def get_struct_type(self) -> StructType:
-    pass
-
-  def next(self) -> ParseTreeIterator:
-    pass
-
-  def previous(self) -> ParseTreeIterator:
-    pass
-
-  def children(self) -> list:
-    pass
-
-  def has_next(self) -> bool:
-    pass
-
-  def has_previous(self) -> bool:
-    pass
-
-  def has_children(self) -> bool:
-    pass
