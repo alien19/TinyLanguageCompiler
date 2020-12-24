@@ -5,3 +5,4 @@ result.txt
 *.spec
 *.tiny
 __pycache__
+.vscode/settings.json
