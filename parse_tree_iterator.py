@@ -1,7 +1,7 @@
 from node import Node
 
 class ParseTreeIterator:
-    def __init__(self):
+    def __init__(self, node):
       self.node = node
 
     def nxt(self):
