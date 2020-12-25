@@ -1,6 +1,7 @@
 from enum import Enum, auto
-from common import StructVal, TokenType, ParseTreeIterator
+from common import StructVal, TokenType
 from node import Node
+from parse_tree_iterator import ParseTreeIterator
 
 # TODO
 class ParseTree:

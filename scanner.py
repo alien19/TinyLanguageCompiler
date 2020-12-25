@@ -35,12 +35,12 @@ class Scanner:
     self.text = text
     self.stringsAndTokens = []
 
-    self.parse()
+    self.scan()
   
   def set_text(self, text: str):
     self.text = text
 
-    self.parse()
+    self.scan()
   
   def get_strings_and_tokens_list(self):
     return self.stringsAndTokens
@@ -53,7 +53,7 @@ class Scanner:
     result = result[:-1]
     return result
   
-  def parse(self):
+  def scan(self):
     self.stringsAndTokens = []
     # Remove comments
     self.text = re.sub('\{(.|\n)*?\}', '', self.text)
