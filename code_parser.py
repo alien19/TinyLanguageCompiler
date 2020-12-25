@@ -16,7 +16,7 @@ class Parser:
         self.parseTree = None
         self.parse()
 
-    def set_strings_and_tokens(self, stringsAndTokens: list):
+    def set_strings_and_tokens(self, stringsAndTokens: list) -> None:
         self.stringsAndTokens = stringsAndTokens
         self.currentIndex = 0
         self.parseTree: ParseTree = None
@@ -37,13 +37,10 @@ class Parser:
     def current_string(self) -> str:
         return self.stringsAndTokens[self.currentIndex][0]
 
-    def current_string_and_token(self) -> TokenType:
-        return self.stringsAndTokens[self.currentIndex]
-
     def parse(self):
         seqNode = self.get_stmt_seq_node()
         self.parseTree = ParseTree()
-        self.parseTree.root = seqNode
+        self.parseTree.set_root(seqNode)
 
     def get_stmt_seq_node(self) -> Node:
         node: Node = None
@@ -103,7 +100,7 @@ class Parser:
         # Skip the "end" keyword
         self.currentIndex += 1
         # Create the "if" statement node
-        node = Node("if", None, StructType.STATEMENT, TokenType.IF)
+        node = Node("if", None, StructType.STATEMENT)
         node.add_child(expNode)
         node.add_child(thenStmtSeqNode)
         if elseStmtSeqNode is not None:
@@ -120,7 +117,7 @@ class Parser:
         # Get exp node
         expNode = self.get_exp_node()
         # Create "repeat" statement node
-        node = Node("repeat", None, StructType.STATEMENT, TokenType.REPEAT)
+        node = Node("repeat", None, StructType.STATEMENT)
         node.add_child(stmtSeqNode)
         node.add_child(expNode)
         return node
@@ -133,7 +130,7 @@ class Parser:
         # Skip the identifier
         self.currentIndex += 1
         # Create "read" statement node
-        node = Node("read", identifier, StructType.STATEMENT, TokenType.READ)
+        node = Node("read", identifier, StructType.STATEMENT)
         return node
 
     def get_write_stmt_node(self) -> Node:
@@ -142,7 +139,7 @@ class Parser:
         # Get exp node
         expNode = self.get_exp_node()
         # Create "write" statement node
-        node = Node("write", None, StructType.STATEMENT, TokenType.WRITE)
+        node = Node("write", None, StructType.STATEMENT)
         node.add_child(expNode)
         return node
 
@@ -156,7 +153,7 @@ class Parser:
         # Get exp node
         expNode = self.get_exp_node()
         # Create the "assign" statement node
-        node = Node("assign", identifier, StructType.STATEMENT, TokenType.ASSIGN)
+        node = Node("assign", identifier, StructType.STATEMENT)
         node.add_child(expNode)
         return node
 
@@ -222,11 +219,11 @@ class Parser:
         currentToken = self.current_token()
         currentString = self.current_string()
         if currentToken == TokenType.ID:
-            node = Node("id", currentString, StructType.EXPRESSION, TokenType.ID)
+            node = Node("id", currentString, StructType.EXPRESSION)
             # Skip the identifier
             self.currentIndex += 1
         elif currentToken == TokenType.NUM:
-            node = Node("const", currentString, StructType.EXPRESSION, TokenType.NUM)
+            node = Node("const", currentString, StructType.EXPRESSION)
             # Skip the number
             self.currentIndex += 1
         elif currentToken == TokenType.OPEN_PARAN:
@@ -261,7 +258,7 @@ class Parser:
 
     def get_op_node(self) -> Node:
         # Create the "op" node
-        node = Node("op", self.current_string(), StructType.EXPRESSION, self.current_token())
+        node = Node("op", self.current_string(), StructType.EXPRESSION)
         # Skip the op
         self.currentIndex += 1
         return node

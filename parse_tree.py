@@ -1,4 +1,3 @@
-from common import TokenType, StructType
 from node import Node
 from parse_tree_iterator import ParseTreeIterator
 
@@ -8,18 +7,16 @@ class ParseTree:
         self.root: Node = None
         self.currentNode: Node = None
 
-    def iterator(self):
-      if self.is_empty():
-        return None
-      return ParseTreeIterator(self.root)
-    
-    def set_root(self, node: Node):
-      self.root = node
-    
-    def is_empty(self):
-      return self.root is None
-    
-    def 
+    def iterator(self) -> ParseTreeIterator:
+        if self.is_empty():
+            return None
+        return ParseTreeIterator(self.root)
+
+    def set_root(self, node: Node) -> None:
+        self.root = node
+
+    def is_empty(self) -> bool:
+        return self.root is None
 
     # def go_left(self):
     #     tmp_node = self.currentNode

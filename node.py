@@ -1,7 +1,7 @@
 from common import StructType, TokenType
 
 class Node:
-    def __init__(self, text: str, value: str, structType: StructType, tokenType: TokenType):
+    def __init__(self, text: str, value: str, structType: StructType):
         self.text: str = text
         self.value: str = value
         self.structType = structType
