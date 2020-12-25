@@ -3,7 +3,7 @@ from scanner import Scanner
 
 
 class Compiler:
-    def __init__(self, text: str):
+    def __init__(self, text: str=""):
         self.scanner: Scanner = Scanner(text)
         stringsAndTokens = self.scanner.get_strings_and_tokens_list()
         self.parser: Parser = Parser(stringsAndTokens)
@@ -15,6 +15,3 @@ class Compiler:
 
     def get_parse_tree_iterator(self):
         return self.parser.get_parse_tree_iterator()
-
-    def get_parser(self):
-        return self.parser

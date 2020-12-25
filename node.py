@@ -5,11 +5,14 @@ class Node:
         self.text: str = text
         self.value: str = value
         self.structType = structType
-        self.tokenType = tokenType
+        # self.tokenType = tokenType
         self.nxt: Node = None
         self.prev: Node = None
         self.parent: Node = None
-        self.children: list = []   
+        self.children: list = []
+
+    def __str__(self):
+        return self.text  
 
     def add_right(self, node):
         self.nxt = node

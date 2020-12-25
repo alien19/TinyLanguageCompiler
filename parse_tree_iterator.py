@@ -1,35 +1,37 @@
-# TODO
+from node import Node
 
 class ParseTreeIterator:
     def __init__(self):
-      pass
+      self.node = node
 
-    def get_text(self): #-> str:
-      pass
+    def nxt(self):
+      return ParseTreeIterator(self.node.nxt)
 
-    def get_value(self): # -> str:
-      pass
+    def prev(self):
+      return ParseTreeIterator(self.node.prev)    
 
-    def get_token_type(self): # -> TokenType:
-      pass
+    def get_text(self):
+      return str(self.node)
 
-    def get_struct_type(self): #-> StructType:
-      pass
+    def get_value(self):
+      return self.node.value
 
-    def __next__(self): # -> ParseTreeIterator:
-      pass
+    # def get_token_type(self):
+    #   return self.node.tokenType
 
-    def previous(self): # -> ParseTreeIterator:
-      pass
+    def get_struct_type(self):
+      return self.node.structType
 
-    def children(self): # -> list:
-      pass
+    def children(self):
+      itrs = [ParseTreeIterator(child) for child in children]
+      return itrs
 
-    def has_next(self): # -> bool:
-      pass
+    def has_next(self):
+      return self.node.nxt is not None
 
-    def has_previous(self): # -> bool:
-      pass
+    def has_previous(self):
+      return self.node.prev is not None
 
-    def has_children(self): # -> bool:
-      pass
+    def has_children(self):
+      return len(self.node.children) > 0
+      
