@@ -1,16 +1,15 @@
-from common import TokenType, StructType
+# from common import StructType, TokenType
 
-# TODO
 class Node:
-    def __init__(self, text:str, value: str, structVal: StructType, tokenType: TokenType):
-      self.text:str = text
-      self.value:str = value
-      self.structVal:StructType = structVal
-      self.tokenType:TokenType = tokenType
-      self.nxt:Node = None
-      self.prev:Node = None
-      self.parent:Node = None
-      self.children:list = []
-    
-    def add_child(node:Node):
-      pass
+    def __init__(self, text: str, value: str, structVal, tokenType):
+        self.text: str = text
+        self.value: str = value
+        self.structVal = structVal
+        self.tokenType = tokenType
+        self.nxt: Node = None
+        self.prev: Node = None
+        self.parent: Node = None
+        self.children: list = []   
+
+    def add_child(self, node):
+        self.children.append(node)
