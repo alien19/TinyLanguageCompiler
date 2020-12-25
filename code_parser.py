@@ -32,8 +32,6 @@ class Parser:
         return self.currentIndex >= len(self.stringsAndTokens)
 
     def current_token(self) -> TokenType:
-        print(len(self.stringsAndTokens))
-        print(self.currentIndex)
         return self.stringsAndTokens[self.currentIndex][1]
 
     def current_string(self) -> str:
