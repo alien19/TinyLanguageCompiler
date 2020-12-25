@@ -11,5 +11,10 @@ class Node:
         self.parent: Node = None
         self.children: list = []   
 
+    def add_right(self, node):
+        self.nxt = node
+        node.prev = self
+
     def add_child(self, node):
         self.children.append(node)
+        node.parent = self
