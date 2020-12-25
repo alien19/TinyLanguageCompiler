@@ -45,11 +45,19 @@ class ParseTree:
     self.currentNode = self.currentNode.parent
     self.currentNode.prev = tmp_node
 
-  def insert_right(self, text: str, value: str, structVal: StructType, tokenType: TokenType):
+  def insert_right(self, text: str, value: str, structType: StructType, tokenType: TokenType):
     # Insert a̶n̶d̶ g̶o̶ t̶o̶ t̶h̶e̶ r̶i̶g̶h̶t̶
-    self.currentNode.nxt = Node(text, value, structVal, tokenType)
+    insertedNode = Node(text, value, structType, tokenType)
+    if self.root is None:
+      self.root = insertedNode
+    else:
+      self.currentNode.nxt = insertedNode
 
-  def insert_child(self, text: str, value: str, structVal: StructType, tokenType: TokenType):
+  def insert_child(self, text: str, value: str, structVal: structType, tokenType: TokenType):
     # Insert a̶n̶d̶ g̶o̶ t̶o̶ t̶h̶e̶ c̶h̶i̶l̶d̶
-    # self.currentNode.children.append(Node(text, value, structVal, tokenType))
-    self.currentNode.add_child(Node(text, value, structVal, tokenType))
+    # self.currentNode.children.append(Node(text, value, structType, tokenType))
+    insertedNode = Node(text, value, structType, tokenType)
+    if self.root is None:
+      self.root = insertedNode
+    else:
+      self.currentNode.add_child(insertedNode)
