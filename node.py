@@ -1,10 +1,10 @@
-# from common import StructType, TokenType
+from common import StructType, TokenType
 
 class Node:
-    def __init__(self, text: str, value: str, structVal, tokenType):
+    def __init__(self, text: str, value: str, structType: StructType, tokenType: TokenType):
         self.text: str = text
         self.value: str = value
-        self.structVal = structVal
+        self.structType = structType
         self.tokenType = tokenType
         self.nxt: Node = None
         self.prev: Node = None
