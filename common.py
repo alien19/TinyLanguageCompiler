@@ -28,6 +28,6 @@ class TokenType(Enum):
 
 
 class StructType(Enum):
-  EXPRESSION = auto()
-  STATEMENT = auto()
+  EXPRESSION = auto() # OVal
+  STATEMENT = auto()  # Rectangle
 

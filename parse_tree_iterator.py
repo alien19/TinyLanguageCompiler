@@ -23,7 +23,7 @@ class ParseTreeIterator:
       return self.node.structType
 
     def children(self):
-      itrs = [ParseTreeIterator(child) for child in children]
+      itrs = [ParseTreeIterator(child) for child in self.node.children]
       return itrs
 
     def has_next(self):
