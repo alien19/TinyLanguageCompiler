@@ -1,6 +1,7 @@
 from common import StructType, TokenType
 
 class Node:
+    _node_id = 0
     def __init__(self, text: str, value: str, structType: StructType):
         self.text: str = text
         self.value: str = value
@@ -10,6 +11,8 @@ class Node:
         self.prev: Node = None
         self.parent: Node = None
         self.children: list = []
+        self.id = Node._node_id
+        Node._node_id += 1
 
     def __str__(self):
         return self.text  

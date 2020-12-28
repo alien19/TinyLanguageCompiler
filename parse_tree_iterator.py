@@ -19,6 +19,9 @@ class ParseTreeIterator:
 
     def get_value(self) -> str:
         return self.node.value
+    
+    def get_node_id(self) -> str:
+        return str(self.node.id)
 
     # def get_token_type(self):
     #   return self.node.tokenType
