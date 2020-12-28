@@ -8,7 +8,7 @@ class ParseTreeIterator:
     def __init__(self, node: Node):
         self.node = node
 
-    def nxt(self) -> ParseTreeIterator:
+    def next(self) -> ParseTreeIterator:
         return ParseTreeIterator(self.node.nxt)
 
     def prev(self) -> ParseTreeIterator:
