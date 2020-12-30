@@ -1,5 +1,6 @@
 import re
 from common import TokenType
+from exceptions import ScannerError
 
 
 class Scanner:
@@ -86,7 +87,7 @@ class Scanner:
                     continue
             if not isNumOrId:
                 # Raise exception if no suitable token was found
-                raise Exception("Unknown Token: {}".format(string))
+                raise ScannerError("Unknown Token: {}".format(string))
 
 
 def main():

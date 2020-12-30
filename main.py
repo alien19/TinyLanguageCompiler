@@ -1,12 +1,19 @@
 from common import StructType
 from compiler import Compiler
 from graphviz import Source
+from exceptions import ScannerError, ParserError
 
 f = open("example1.tiny", "r")
 content = "".join(f.readlines())
 f.close()
 
-c = Compiler(text=content)
+try:
+    c = Compiler(text=content)
+except ScannerError as e:
+    pass
+except ParserError as e:
+    pass
+
 it = c.get_parse_tree_iterator()
 
 nodes = {}
