@@ -1,6 +1,6 @@
 import sys
 import PySide2.QtCore as QtCore
-from PySide2.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QFileDialog
+from PySide2.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QFileDialog, QErrorMessage
 from PySide2.QtGui import QPixmap, QFont, QColor
 from editor import Editor
 from backend import compile
@@ -35,8 +35,12 @@ class MainWindow(QMainWindow):
             self.editor.setPlainText(content)
     
     def _on_compile_clicked(self):
-        content = self.editor.toPlainText()
-        compile(content)
+        try:
+            content = self.editor.toPlainText()
+            compile(content)
+        except:
+            error_dialog = QErrorMessage(self)
+            error_dialog.showMessage('Unknown token')
 
 
 if __name__ == '__main__':
